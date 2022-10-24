@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_161655) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_24_170901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "btree_gist"
@@ -49,6 +49,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_161655) do
     t.string "srtext", limit: 2048
     t.string "proj4text", limit: 2048
     t.check_constraint "srid > 0 AND srid <= 998999", name: "spatial_ref_sys_srid_check"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.boolean "is_confirmed?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
