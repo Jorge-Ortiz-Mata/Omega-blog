@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
-  before_action :set_user, only: %i[show edit]
+  before_action :set_user, only: %i[show edit update]
 
   def index
     @users = User.all
@@ -24,6 +24,14 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: "Sign up successfully"
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'User was updated'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
