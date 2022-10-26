@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create", as: 'new_user_session'
   get '/login', to: "sessions#login", as: 'login'
 
+  get "/user/:id/edit", to: "users#edit", as: "user_edit"
   get "/user/:id", to: "users#show", as: "user"
-  get '/users', to: 'users#index'
   post '/signup', to: "users#create", as: "new_user_registration"
   get '/signup', to: "users#new", as: "signup"
+  get '/users', to: 'users#index'
 
   delete "/article/:id", to: "articles#destroy", as: "article_destroy"
   patch "/article/:id", to: "articles#update"
