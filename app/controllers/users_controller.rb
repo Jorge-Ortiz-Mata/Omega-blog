@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update destroy]
 
   def index
     @users = User.all
@@ -33,6 +33,12 @@ class UsersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    session[:user_id] = nil if current_user == @user
+    @user.destroy
+    redirect_to users_path, notice: 'User was successfully deleted.'
   end
 
   private
