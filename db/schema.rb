@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_27_194807) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_26_204756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "btree_gist"
@@ -59,6 +59,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_194807) do
     t.boolean "is_confirmed?", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.date "birth"
+    t.string "city"
+    t.string "country"
+    t.boolean "gender"
+    t.integer "role"
   end
 
 end
