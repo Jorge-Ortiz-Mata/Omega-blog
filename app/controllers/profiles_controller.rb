@@ -52,7 +52,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      debugger
       params.require(:profile).permit(:name, :city, :country, :birth, :gender, :role)
     end
 end

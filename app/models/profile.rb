@@ -11,6 +11,8 @@ class Profile < ApplicationRecord
   private
 
   def validate_gender
-
+    unless self.gender == 'Male' || self.gender == 'Female'
+      errors.add(:gender, "was specified incorrectly")
+    end
   end
 end
