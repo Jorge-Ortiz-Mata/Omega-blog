@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_28_145334) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_28_153121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "btree_gist"
@@ -45,6 +45,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_145334) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "country"
+    t.date "birth"
+    t.boolean "gender"
+    t.integer "role"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "spatial_ref_sys", primary_key: "srid", id: :integer, default: nil, force: :cascade do |t|
     t.string "auth_name", limit: 256
     t.integer "auth_srid"
@@ -61,4 +74,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_145334) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "profiles", "users"
 end
