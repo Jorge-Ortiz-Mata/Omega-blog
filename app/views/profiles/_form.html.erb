@@ -32,18 +32,10 @@
   </div>
 
   <div>
-    <%= form.label :gender, style: "display: block" %>
-    <%= form.check_box :gender %>
-  </div>
-
-  <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.number_field :role %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.radio_button :gender, "Male" %>
+    <%= form.label :gender, "Male" %>
+    <%= form.radio_button :gender, "Female" %>
+    <%= form.label :gender, "Female" %>
   </div>
 
   <div>
