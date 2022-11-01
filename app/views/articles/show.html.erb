@@ -5,6 +5,9 @@
   <div>
     <%= @article.description %>
   </div>
+  <div>
+    <%= image_tag(@article.avatar, width: "400", height: "200") %>
+  </div>
 
   <div>
     <%= link_to 'Edit article', article_edit_path(@article) %>
