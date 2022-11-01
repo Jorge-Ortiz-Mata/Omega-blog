@@ -6,7 +6,10 @@
     <%= @article.description %>
   </div>
   <div>
-    <%= image_tag(@article.avatar, width: "400", height: "200") %>
+    <%= image_tag(@article.avatar, width: "400", height: "200") if @article.avatar.attached? %>
+  </div>
+  <div>
+    <%= @article.body %>
   </div>
 
   <div>
