@@ -18,8 +18,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-    Article.add_categories(@article, categories_ids)
-
+    Article.add_categories(@article, categories_ids) if categories_ids.present?
 
     if @article.save
       redirect_to articles_path, notice: "Article was created."

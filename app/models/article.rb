@@ -9,6 +9,6 @@ class Article < ApplicationRecord
   private
 
   def self.add_categories(article, ids)
-    debugger
+    ids.each { |id| article.categories << Category.find(id) }
   end
 end
