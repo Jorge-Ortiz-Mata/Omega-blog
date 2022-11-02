@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
-  before_action :categories_ids, only: %i[create]
+  before_action :categories_ids, only: %i[create update]
 
   def index
     @articles = Article.all
@@ -28,6 +28,8 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    Article.update_categories(@article, categories_ids) if categories_ids.present?
+
     if @article.update(article_params)
       redirect_to article_path(@article)
     else

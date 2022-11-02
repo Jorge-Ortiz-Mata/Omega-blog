@@ -11,4 +11,9 @@ class Article < ApplicationRecord
   def self.add_categories(article, ids)
     ids.each { |id| article.categories << Category.find(id) }
   end
+
+  def self.update_categories(article, ids)
+    article.categories.delete_all unless article.categories.empty?
+    ids.each { |id| article.categories << Category.find(id) }
+  end
 end
