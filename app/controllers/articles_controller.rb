@@ -41,6 +41,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
+    debugger
     params.require(:article).permit(:name, :description, :avatar, :body)
   end
 
