@@ -28,6 +28,9 @@
 
   <div>
     <h4>Comments</h4>
+    <% @article.comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
   </div>
 
   <div>

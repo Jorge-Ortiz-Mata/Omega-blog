@@ -6,15 +6,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    debugger
 
-    # respond_to do |format|
-    #   if @comment.save
-    #     format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to article_path(@comment.article_id), notice: "Comment was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
