@@ -1,8 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ edit update destroy ]
-
-  def edit
-  end
+  before_action :set_comment, only: %i[ destroy ]
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -16,21 +13,11 @@ class CommentsController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def destroy
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to article_path(@comment.article_id), notice: "Comment was successfully destroyed." }
     end
   end
 
