@@ -24,14 +24,17 @@
         method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
   </div>
 
-  <div>
+  <div class="w-full">
     <h4 class="font-bold text-lg mt-10">Comments</h4>
-    <% @article.comments.each do |comment| %>
-      <%= render 'comments/comment', comment: comment %>
-    <% end %>
+
+    <div class="my-5">
+      <% @article.comments.each do |comment| %>
+        <%= render 'comments/comment', comment: comment %>
+      <% end %>
+    </div>
   </div>
 
-  <div>
+  <div class="w-full">
     <h5 class="font-semibold mt-10">Add comment</h5>
     <%= render 'comments/form', {article: @article, comment: @comment} %>
   </div>
