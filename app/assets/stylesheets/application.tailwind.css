@@ -16,6 +16,9 @@
   },
   .field-form{
     @apply w-full mb-5 rounded-lg text-sm font-semibold;
+  },
+  .big-card{
+    @apply flex flex-col border-2 border-gray-400 rounded-lg p-10 items-center gap-3;
   }
 }
 
