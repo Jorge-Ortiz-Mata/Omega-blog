@@ -20,7 +20,7 @@
 
   <% unless current_user.profile.member? %>
 
-  <% if current_user == @article.user %>
+  <% if current_user == @article.user || current_user.profile.superadmin? %>
 
   <div class="flex gap-10">
     <%= link_to 'Edit article', article_edit_path(@article), class:"btn-primary bg-blue-800" %>

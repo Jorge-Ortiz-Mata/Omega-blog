@@ -24,9 +24,17 @@
   </span>
 
   <% if current_user == profile.user %>
-  <div>
-    <%= link_to "Edit profile", edit_profile_path(profile), class: "btn-primary bg-green-800" %>
-  </div>
-<% end %>
+    <div>
+      <%= link_to "Edit profile", edit_profile_path(profile), class: "btn-primary bg-green-800" %>
+      <%= link_to "Edit account", user_edit_path(profile.user), class: "btn-primary bg-blue-800" %>
+    </div>
+  <% end %>
+
+  <% if current_user == profile.user || current_user.profile.superadmin? %>
+    <div>
+      <%= button_to 'Cancel account', user_destroy_path(profile.user), class:"btn-primary bg-red-800",
+        method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+    </div>
+  <% end %>
 
 </div>
