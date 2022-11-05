@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ destroy ]
+  before_action :same_user?, only: %i[destroy]
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -28,5 +29,9 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:text, :article_id)
+    end
+
+    def same_user?
+      redirect_to articles_path if @comment.user != current_user
     end
 end
