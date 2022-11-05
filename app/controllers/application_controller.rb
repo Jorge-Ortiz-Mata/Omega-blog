@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
       redirect_to new_profile_path, notice: 'Tell us more about you'
     end
   end
+
+  def user_is_member?
+    if current_user && current_user.profile.member?
+      redirect_to root_path, notice: "You don't have permissions."
+    end
+  end
 end
