@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      UserMailer.with(user: @user).confirm_account.deliver_later
+      UserMailer.with(user: @user, url: params[:user][:url]).confirm_account.deliver_later
       redirect_to login_path, notice: "An email was sent to your email account."
     else
       render :new, status: :unprocessable_entity
